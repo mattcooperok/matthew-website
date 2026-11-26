@@ -112,7 +112,7 @@
     }
 
     .video-row.three {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1.5fr 1fr 1fr;
     }
 
     .video {
@@ -126,6 +126,7 @@
     .video.tiktok,
     .video.vertical {
       aspect-ratio: 9 / 16;
+      max-width: 340px;
     }
 
     .video.square {
@@ -196,7 +197,7 @@
       <!-- FIRST ROW: TWO VIDEOS -->
       <div class="video-row two">
 
-        <!-- First YouTube-size MP4 -->
+        <!-- First MP4 -->
         <div class="video">
           <video autoplay muted loop playsinline
             style="width: 100%; height: 100%; object-fit: cover;">
