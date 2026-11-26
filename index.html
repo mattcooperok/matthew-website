@@ -2,37 +2,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Matthew Cooper</title>
-  <style>
-    body {
-      margin: 0;
-      background: #000;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matthew Cooper</title>
+
+<style>
+  body {
+    margin: 0;
+    background: #000;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  header {
+    padding: 65px 30px 50px;
+    text-align: center;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 56px;
+    font-weight: 800;
+    letter-spacing: -3px;
+  }
+
+  .subtitle {
+    margin-top: 12px;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #aaa;
+    text-transform: uppercase;
+  }
+
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    padding: 0 30px;
+  }
+
+  .video {
+    aspect-ratio: 16 / 9;
+  }
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 36px;
     }
-    .video {
-      width: 90%;
-      max-width: 900px;
-      margin: 40px auto;
-      aspect-ratio: 16 / 9;
+
+    .video-grid {
+      grid-template-columns: 1fr;
+      padding: 0 15px;
     }
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      display: block;
-    }
-  </style>
+  }
+</style>
 </head>
+
 <body>
+
+<header>
+  <h1>MATTHEW COOPER</h1>
+  <div class="subtitle">Creator · Filmmaker · Musician</div>
+</header>
+
+<div class="video-grid">
+
+  <!-- VIDEO 1 -->
   <div class="video">
     <iframe
       src="https://www.youtube.com/embed/JW4YkyVyXNk"
-      title="Matthew Cooper video"
-      referrerpolicy="strict-origin-when-cross-origin"
-      allow="autoplay; encrypted-media; picture-in-picture"
+      title="Video 1"
       allowfullscreen>
     </iframe>
   </div>
+
+  <!-- VIDEO 2: CHANGE THE ID BELOW -->
+  <div class="video">
+    <iframe
+      src="https://www.youtube.com/embed/REPLACE_WITH_VIDEO_ID"
+      title="Video 2"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+</div>
+
 </body>
 </html>
