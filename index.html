@@ -115,6 +115,13 @@
       grid-template-columns: 1.5fr 1fr 1fr;
     }
 
+    /* Stack the second YouTube video and SoundCloud */
+    .video-stack {
+      display: grid;
+      gap: 24px;
+      align-content: start;
+    }
+
     .video {
       position: relative;
       width: 100%;
@@ -197,7 +204,7 @@
       <!-- FIRST ROW: TWO VIDEOS -->
       <div class="video-row two">
 
-        <!-- First MP4 -->
+        <!-- 3D animated text -->
         <div class="video">
           <video autoplay muted loop playsinline
             style="width: 100%; height: 100%; object-fit: cover;">
@@ -205,7 +212,7 @@
           </video>
         </div>
 
-        <!-- YouTube video 1 -->
+        <!-- YouTube video 1-->
         <div class="video">
           <iframe
             src="https://www.youtube.com/embed/JW4YkyVyXNk?autoplay=1&mute=1&controls=0&playsinline=1&rel=0&start=127"
@@ -218,21 +225,35 @@
 
       </div>
 
-      <!-- SECOND ROW: THREE VIDEOS -->
+      <!-- SECOND ROW: STACKED VIDEO + TWO VERTICAL VIDEOS -->
       <div class="video-row three">
 
-        <!-- YouTube video 2 -->
-        <div class="video">
-          <iframe
-            src="https://www.youtube.com/embed/d0HTe1XFEoM?autoplay=1&mute=1&controls=0&playsinline=1&rel=0&start=5"
-            title="Matthew Cooper video 2"
-            allow="autoplay; encrypted-media; picture-in-picture"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen>
-          </iframe>
-        </div>
+        <!-- LEFT COLUMN: YOUTUBE + SOUNDCLOUD -->
+        <div class="video-stack">
 
-  
+          <!-- YouTube video 2 -->
+          <div class="video">
+            <iframe
+              src="https://www.youtube.com/embed/d0HTe1XFEoM?autoplay=1&mute=1&controls=0&playsinline=1&rel=0&start=5"
+              title="Matthew Cooper video 2"
+              allow="autoplay; encrypted-media; picture-in-picture"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+          </div>
+
+          <!-- SoundCloud-->
+          <div class="video">
+            <iframe
+              id="soundcloudPlayer"
+              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A1664305848&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+              title="I -love- birds"
+              allow="autoplay; encrypted-media"
+              scrolling="no">
+            </iframe>
+          </div>
+
+        </div>
 
         <!-- Maybelline vertical video -->
         <div class="video vertical">
@@ -254,18 +275,28 @@
           </iframe>
         </div>
 
-         <div class="video">
-          <iframe
-           width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A1664305848&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/matt-cooper-957340942" title="matt cooper" target="_blank" style="color: #cccccc; text-decoration: none;">matt cooper</a> · <a href="https://soundcloud.com/matt-cooper-957340942/birdpod1" title="I -love- birds" target="_blank" style="color: #cccccc; text-decoration: none;">I -love- birds</a></div>
-          </iframe>
-        </div>
+      </div>
 
     </section>
 
   </main>
 
+  <!-- SoundCloud player API -->
+  <script src="https://w.soundcloud.com/player/api.js"></script>
+
   <script>
+    // Start SoundCloud at 2 minutes 17 seconds
+    const soundcloudFrame = document.getElementById("soundcloudPlayer");
+    const soundcloudWidget = SC.Widget(soundcloudFrame);
+
+    soundcloudWidget.bind(SC.Widget.Events.READY, function() {
+      soundcloudWidget.seekTo(137000);
+      soundcloudWidget.play();
+    });
+
+    // Maybelline video starts at 2 seconds
     const video = document.getElementById("myVideo");
+
     video.addEventListener("loadedmetadata", function() {
       video.currentTime = 2;
       video.play();
